@@ -10642,5 +10642,9 @@ fieldset:disabled .btn {
     border-bottom: 1px rgb(156, 156, 156) inset;
 }
 
+#navbarSupportedContent1 {
+    margin-right: 20px;
+}
+
 
 /*# sourceMappingURL=bootstrap.css.map */
