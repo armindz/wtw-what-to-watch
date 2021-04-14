@@ -4125,7 +4125,8 @@ fieldset:disabled .btn {
     display: block;
     padding: 0.5rem 1rem;
     text-decoration: none;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    font-size: 1.1em;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -10626,6 +10627,7 @@ fieldset:disabled .btn {
 
 .logo {
     max-width: 200px;
+    max-height: auto;
     margin-left: 10px;
 }
 
@@ -10634,6 +10636,10 @@ fieldset:disabled .btn {
     transition: 100ms ease-in;
     transform: scale(1.05);
     cursor: pointer;
+}
+
+.activeBorderBottom {
+    border-bottom: 1px rgb(156, 156, 156) inset;
 }
 
 
