@@ -10627,7 +10627,7 @@ fieldset:disabled .btn {
 
 .logo {
     max-width: 200px;
-    height: auto;
+    max-height: 100px;
     margin-left: 10px;
 }
 
