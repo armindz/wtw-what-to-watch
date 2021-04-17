@@ -6311,6 +6311,7 @@ fieldset:disabled .btn {
 .carousel-fade .carousel-item {
     opacity: 0;
     transition-property: opacity;
+    transition-duration: .6s;
     transform: none;
 }
 
@@ -10639,7 +10640,7 @@ fieldset:disabled .btn {
 }
 
 .activeBorderBottom {
-    border-bottom: 1px rgb(156, 156, 156) inset;
+    border-bottom: 1px rgb(105, 105, 105) inset;
 }
 
 #navbarSupportedContent1 {
