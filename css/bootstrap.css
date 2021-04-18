@@ -10648,5 +10648,18 @@ fieldset:disabled .btn {
     margin-right: 20px;
 }
 
+#logoSmall {
+    max-width: 40px;
+    height: auto;
+    margin-left: 10px;
+}
+
+#logoSmall:hover {
+    opacity: 0.9;
+    transition: 100ms ease-in;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
 
 /*# sourceMappingURL=bootstrap.css.map */
