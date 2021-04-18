@@ -5210,6 +5210,7 @@ fieldset:disabled .btn {
     color: #495057;
     text-decoration: none;
     background-color: #f8f9fa;
+    transform: scale(1.1);
 }
 
 .list-group-item-action:active {
