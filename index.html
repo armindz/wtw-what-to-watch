@@ -18,7 +18,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body onload="getTop10Movies()">
 
 
 
@@ -181,111 +181,19 @@
             <div id="recipeCarousel" class="carousel slide w-100 " data-ride="carousel">
                 <div class="carousel-inner w-100 " role="listbox">
 
-                    <div class="carousel-item row no-gutters active  ">
-                        <div class="row d-flex justify-content-center ">
+                    <div class="carousel-item row no-gutters active">
+                        <div class="row d-flex justify-content-center " id="topEightFirstPage">
 
-                            <div class=" card mx-1 my-4 " style="max-width: 12rem; max-height:22rem;">
-                                <img class="card-img-top mx-auto my-auto" style="max-width:10rem; max-height:12rem;" src="img/intothestorm.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <a href="#" class="text-decoration-none text-dark">
-                                        <h5 class="card-title ">Into the storm</h5>
-                                    </a>
-                                    <a href="#" class="card-link text-muted text-decoration-none">Genre</a>
-                                    <a href="#" class="card-link text-muted text-decoration-none">(2020)</a>
-
-                                </div>
-                            </div>
-
-                            <div class=" card mx-1 my-4 " style="max-width: 12rem; max-height:22rem;">
-                                <img class="card-img-top mx-auto my-auto" style="max-width:10rem; max-height:12rem;" src="img/intothestorm.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <a href="#" class="text-decoration-none text-dark">
-                                        <h5 class="card-title ">Into the storm</h5>
-                                    </a>
-                                    <a href="#" class="card-link text-muted text-decoration-none">Genre</a>
-                                    <a href="#" class="card-link text-muted text-decoration-none">(2020)</a>
-
-                                </div>
-                            </div>
-                            <div class=" card mx-1 my-4 " style="max-width: 12rem; max-height:22rem;">
-                                <img class="card-img-top mx-auto my-auto" style="max-width:10rem; max-height:12rem;" src="img/intothestorm.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <a href="#" class="text-decoration-none text-dark">
-                                        <h5 class="card-title ">Into the storm</h5>
-                                    </a>
-                                    <a href="#" class="card-link text-muted text-decoration-none">Genre</a>
-                                    <a href="#" class="card-link text-muted text-decoration-none">(2020)</a>
-
-                                </div>
-                            </div>
-
-                            <div class=" card mx-1 my-4 " style="max-width: 12rem; max-height:22rem;">
-                                <img class="card-img-top mx-auto my-auto" style="max-width:10rem; max-height:12rem;" src="img/intothestorm.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <a href="#" class="text-decoration-none text-dark">
-                                        <h5 class="card-title ">Into the storm</h5>
-                                    </a>
-                                    <a href="#" class="card-link text-muted text-decoration-none">Genre</a>
-                                    <a href="#" class="card-link text-muted text-decoration-none">(2020)</a>
-
-                                </div>
-                            </div>
 
                         </div>
                     </div>
 
                     <div class="carousel-item row no-gutters">
-                        <div class="row d-flex justify-content-center ">
+                        <div class="row d-flex justify-content-center" id="topEightSecondPage">
 
 
 
-                            <div class="card mx-1 my-4 " style="max-width: 12rem; max-height:22rem;">
-                                <img class="card-img-top mx-auto my-auto" style="max-width:10rem; max-height:12rem;" src="img/intothestorm.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <a href="#" class="text-decoration-none text-dark">
-                                        <h5 class="card-title ">Into the storm</h5>
-                                    </a>
-                                    <a href="#" class="card-link text-muted text-decoration-none">Genre</a>
-                                    <a href="#" class="card-link text-muted text-decoration-none">(2020)</a>
 
-                                </div>
-                            </div>
-
-                            <div class=" card mx-1 my-4 " style="max-width: 12rem; max-height:22rem;">
-                                <img class="card-img-top mx-auto my-auto" style="max-width:10rem; max-height:12rem;" src="img/intothestorm.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <a href="#" class="text-decoration-none text-dark">
-                                        <h5 class="card-title ">Into the storm</h5>
-                                    </a>
-                                    <a href="#" class="card-link text-muted text-decoration-none">Genre</a>
-                                    <a href="#" class="card-link text-muted text-decoration-none">(2020)</a>
-
-                                </div>
-                            </div>
-
-                            <div class=" card mx-1 my-4 " style="max-width: 12rem; max-height:22rem;">
-                                <img class="card-img-top mx-auto my-auto" style="max-width:10rem; max-height:12rem;" src="img/intothestorm.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <a href="#" class="text-decoration-none text-dark">
-                                        <h5 class="card-title ">Into the storm</h5>
-                                    </a>
-                                    <a href="#" class="card-link text-muted text-decoration-none">Genre</a>
-                                    <a href="#" class="card-link text-muted text-decoration-none">(2020)</a>
-
-                                </div>
-                            </div>
-
-                            <div class=" card mx-1 my-4 " style="max-width: 12rem; max-height:22rem;">
-                                <img class="card-img-top mx-auto my-auto" style="max-width:10rem; max-height:12rem;" src="img/intothestorm.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <a href="#" class="text-decoration-none text-dark">
-                                        <h5 class="card-title ">Into the storm</h5>
-                                    </a>
-                                    <a href="#" class="card-link text-muted text-decoration-none">Genre</a>
-                                    <a href="#" class="card-link text-muted text-decoration-none">(2020)</a>
-
-                                </div>
-                            </div>
 
                         </div>
                     </div>
