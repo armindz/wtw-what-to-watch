@@ -6,6 +6,7 @@ let apiKey = "?api_key=8c1a9592c5e5592b4ae3683c1656a158";
 
 
 
+
 function getTop10Movies() {
     const NUMBER_OF_TOP_MOVIES = 7;
     type = "movie/top_rated";
@@ -59,15 +60,17 @@ function getListOfGenres() {
 
     type = "genre/movie/list";
     let url = apiUrl + type + apiKey;
+    let genres = [];
 
     fetch(url).then(function(response) {
         return response.json();
     }).then(function(obj) {
-        let genres = [];
+
         for (let i = 0; i < obj.genres.length; i++) {
             genres.push(obj.genres[i]);
-        }
 
+        }
+        console.log(obj.genres[1]);
         return genres;
 
 
@@ -75,6 +78,14 @@ function getListOfGenres() {
         console.error("Something went wrong");
         console.error(error);
     })
+    return genres;
 
+}
+
+function getNameFromGenreId() {
+
+    let genres = getListOfGenres();
+
+    console.log();
 
 }
