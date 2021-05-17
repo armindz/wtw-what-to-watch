@@ -4,16 +4,16 @@ let apiUrl = "https://api.themoviedb.org/3/";
 let type;
 let apiKey = "?api_key=8c1a9592c5e5592b4ae3683c1656a158";
 let genreName = null;
+let imagePathPrefix = "https://www.themoviedb.org/t/p/w500";
 
-
-
+// mechanism for getting most popular movies & display at index.html
 function getTop10Movies() {
     const NUMBER_OF_TOP_MOVIES = 7;
-    type = "movie/top_rated";
-    let page = "&page_1";
-    let imagePathPrefix = "https://www.themoviedb.org/t/p/w500";
-    let url = apiUrl + type + apiKey + page;
+    type = "movie/popular";
+    // let page = "&page_1";
 
+    let url = apiUrl + type + apiKey;
+    console.log(url);
     fetch(url).then(function(response) {
         return response.json();
     }).then(function(obj) {
@@ -58,6 +58,31 @@ function getTop10Movies() {
         console.error(error);
     })
 
+}
+// mechanism for listing movie genres in movie.html sidebar
+function listMovieGenres() {
+
+    type = "genre/movie/list";
+    let url = apiUrl + type + apiKey;
+
+    fetch(url).then(function(response) {
+        return response.json();
+    }).then(function(obj) {
+
+        let listGenres = document.getElementById("listGenre");
+
+        for (let i = 0; i < obj.genres.length; i++) {
+            let listGenresItem = document.createElement("A");
+            listGenresItem.setAttribute("class", "list-group-item");
+            listGenresItem.setAttribute("name", obj.genres[i].id);
+            listGenresItem.innerText = obj.genres[i].name;
+            listGenres.appendChild(listGenresItem);
+
+        }
+    }).catch(function(error) {
+        console.error("Cannot fetch movie genres");
+        console.error(error);
+    })
 }
 
 function getListOfGenres() {
