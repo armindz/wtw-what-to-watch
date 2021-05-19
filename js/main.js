@@ -85,6 +85,7 @@ function listMovieGenres() {
     })
 }
 
+// get list of genres & return as list
 function getListOfGenres() {
 
     type = "genre/movie/list";
@@ -109,6 +110,7 @@ function getListOfGenres() {
 
 }
 
+// getting name by forwarding genre id
 async function getNameFromGenreId(genreId) {
 
     type = "genre/movie/list";
