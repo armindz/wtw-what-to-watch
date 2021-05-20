@@ -10665,5 +10665,16 @@ fieldset:disabled .btn {
     cursor: pointer;
 }
 
+#item-image {
+    position: relative;
+    display: flex;
+    max-width: 400px;
+    height: 500px;
+}
+
+#item-image img {
+    position: relative;
+}
+
 
 /*# sourceMappingURL=bootstrap.css.map */
