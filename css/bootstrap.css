@@ -453,6 +453,10 @@ legend+* {
 }
 */
 
+a {
+    cursor: pointer;
+}
+
 ::-webkit-search-decoration {
     -webkit-appearance: none;
 }

@@ -75,6 +75,7 @@ function listMovieGenres() {
             let listGenresItem = document.createElement("A");
             listGenresItem.setAttribute("class", "list-group-item");
             listGenresItem.setAttribute("name", obj.genres[i].id);
+            listGenresItem.setAttribute("onclick", "displayMovieByGenre(" + obj.genres[i].id + ")");
             listGenresItem.innerText = obj.genres[i].name;
             listGenres.appendChild(listGenresItem);
 
@@ -135,5 +136,51 @@ async function getNameFromGenreId(genreId) {
             console.error("Something went wrong");
             console.error(error);
         })
+
+}
+
+function displayMovieByGenre(genreId) {
+    document.getElementById("movie-container").innerHTML = "";
+    type = "movie/";
+    const ITEMS_PER_PAGE = 20;
+    for (let i = 2; i < 1000; i++) {
+
+        let url = apiUrl + type + i + apiKey;
+        console.log(url);
+        fetch(url).then(response => {
+
+
+            if (response.status == 200) {
+                console.log(response);
+                return response.json();
+            } else {
+                throw `error with status ${response.status}`;
+            }
+        }).then(function(obj) {
+
+
+            let title = obj.title;
+            let genre = obj.genres[0].name;
+            let img = imagePathPrefix + obj.poster_path;
+            let year = obj.release_date.substring(0, 4);
+            if (obj.genres[0].id == genreId) {
+                document.getElementById("movie-container").innerHTML += "<div class=' card mx-auto my-4 ' style='max-width: 18rem;'>" +
+                    "<img class='card-img-top mx-auto my-auto' style='max-width:16.5rem; max-height:300px;' src='" + img + "' alt='Card image cap'>" +
+                    "  <div class='card-body'>" +
+                    "<h5 class='card-title'>" + obj.title + "</h5>" +
+                    " <a href='#' class='card-link text-muted text-decoration-none'>" + genre + "</a>" +
+                    " <a href='#' class='card-link text-muted text-decoration-none'>(" + year + ")</a>" +
+                    "<a href='#' class='btn btn-primary btn-warning my-4'>Go somewhere</a>" +
+                    "</div>  </div>"
+            }
+
+
+
+
+        }).catch(function(error) {
+            console.log("ERROR");
+            console.log(error);
+        })
+    }
 
 }
