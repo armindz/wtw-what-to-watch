@@ -139,6 +139,7 @@ async function getNameFromGenreId(genreId) {
 
 }
 
+// display movies by genre (triggered when genre section is clicked)
 function displayMovieByGenre(genreId) {
     document.getElementById("movie-container").innerHTML = "";
     type = "movie/";
@@ -185,11 +186,13 @@ function displayMovieByGenre(genreId) {
 
 }
 
+// redirect to item.html & forward item id
 function previewItem(itemId) {
     localStorage.setItem("item-id", itemId);
     window.location.href = "./item.html";
 }
 
+// dynamically display item info at item.html based on it's ID
 function displayItem(itemId) {
     type = "movie/";
     let url = apiUrl + type + itemId + apiKey;
@@ -197,42 +200,46 @@ function displayItem(itemId) {
     fetch(url).then(response => response.json()).then(function(obj) {
 
 
+        // image at item.html
         let itemImg = document.createElement("img");
         itemImg.setAttribute("src", imagePathPrefix + obj.poster_path);
         document.getElementById("item-image").appendChild(itemImg);
 
-
+        // item name at item.html
         let itemName = document.createElement("H3");
         itemName.setAttribute("class", "col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 text-start");
         itemName.setAttribute("id", "item-name");
         itemName.innerText = obj.title;
         document.getElementById("item-name-year").appendChild(itemName);
 
-
+        // item year at item.html
         let itemYear = document.createElement("H3");
         itemYear.setAttribute("class", "col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 text-start");
         itemYear.setAttribute("id", "item-year");
         itemYear.innerText = "(" + obj.release_date.substring(0, 4) + ")";
         document.getElementById("item-name-year").appendChild(itemYear);
 
+        // item genre at item.html
         let itemGenre = document.createElement("P");
         itemGenre.setAttribute("class", "col-2 border");
         itemGenre.innerText = obj.genres[0].name;
         document.getElementById("genre-row").appendChild(itemGenre);
 
+        // item details at item.html
         let itemDetails = document.createElement("P");
         itemDetails.setAttribute("id", "item-details");
         itemDetails.innerText = obj.overview;
         document.getElementById("item-details-row").appendChild(itemDetails);
 
 
+        // production company at item.html
         let prodCompany = document.createElement("P");
         prodCompany.setAttribute("class", "col-6 col-sm-6 col-md-6 col-lg-6 col-xl-5 col-3");
         prodCompany.setAttribute("id", "prod-company");
         prodCompany.innerText = obj.production_companies[0].name;
         document.getElementById("prod-info-row").appendChild(prodCompany);
 
-
+        // production country at item.html
         let prodCountry = document.createElement("P");
         prodCountry.setAttribute("class", "col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-3");
         prodCountry.setAttribute("id", "prod-country");
@@ -240,29 +247,19 @@ function displayItem(itemId) {
         document.getElementById("prod-info-row").appendChild(prodCountry);
 
 
+        // item release date at item.html
         let releaseDate = document.createElement("P");
         releaseDate.setAttribute("class", "col-6 col-sm-6 col-md-6 col-lg-6 col-xl-5 col-3");
         releaseDate.setAttribute("id", "rel-date");
         releaseDate.innerText = "Release date: " + obj.release_date;
         document.getElementById("item-date-id-row").appendChild(releaseDate);
 
+        // item id at item.html
         let itemId = document.createElement("P");
         itemId.setAttribute("class", "col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-3");
         itemId.setAttribute("id", "item-id");
         itemId.innerText = "ID: " + obj.id;
         document.getElementById("item-date-id-row").appendChild(itemId);
-
-        /*
-
-        document.getElementById("item-name").innerText = obj.title;
-        document.getElementById("item-year").innerText = "(" + obj.release_date.substring(0, 4) + ")";
-        document.getElementById("item-genre").innerText = obj.genres[0].name;
-        document.getElementById("item-details").innerText = obj.overview;
-        document.getElementById("prod-company").innerText = obj.production_companies[0].name;
-        document.getElementById("prod-country").innerText = obj.production_countries[0].name;
-        document.getElementById("rel-date").innerText = "Release date:" + obj.release_date;
-        document.getElementById("item-id").innerText = obj.id;
-   */
 
     })
 }
