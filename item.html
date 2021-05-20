@@ -18,7 +18,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 
-<body onload="listMovieGenres() ">
+<body onload="displayItem(localStorage.getItem('item-id'));">
 
 
     <!-- ---------------------- NORMAL HEADER ------------------- -->
@@ -136,30 +136,32 @@
 
                         <div class="row col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3  mx-auto ">
                             <div class="img-fluid " id="item-image">
-                                <img src="img/intothestorm.jpg">
+                                <!-- text injected by js-->
                             </div>
                         </div>
 
                         <div class="row col-12 col-sm-12 col-md-6 col-lg-7 col-xl-8 d-block">
-                            <div class="row my-2">
-                                <h3 class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 text-start" id="name"> NAME OF MOVIE </h3>
-                                <h3 class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 text-start" id="year"> (2020) </h3>
-                            </div>
-                            <p class="col-2 border  " id="genre">DRAMA</p>
-                            <div class="row col-10 my-5 text-start">
+                            <div class="row my-2" id="item-name-year">
 
-                                <p id="details"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, odit impedit non nulla, assumenda obcaecati voluptatem at illo earum consequatur accusantium voluptates est numquam perspiciatis placeat! Quia repudiandae
-                                    unde deleniti.
-                                </p>
+
+                            </div>
+                            <div class="row" id="genre-row">
+                                <!-- text injected by js-->
+
                             </div>
 
-                            <div class="row col-12 col-sm-12 col-md-10 col-lg-10 col-xl-8 col-6 ">
-                                <p class="col-6 col-sm-6 col-md-5 col-lg-5 col-xl-4 col-3">Release date:</p>
-                                <p class="col-6 col-sm-6 col-md-5 col-lg-5 col-xl-4 col-3">23/9/2020</p>
+                            <div class="row col-10 my-5 text-start" id="item-details-row">
+
+                                <!-- text injected by js -->
                             </div>
 
+                            <div class="row col-12 col-sm-12 col-md-11 col-lg-11 col-xl-8 text-start" id="prod-info-row">
+                                <!-- text injected by js -->
+                            </div>
 
-
+                            <div class="row col-12 col-sm-12 col-md-11 col-lg-11 col-xl-8 text-start" id="item-date-id-row">
+                                <!-- text injected by js -->
+                            </div>
 
 
                         </div>
