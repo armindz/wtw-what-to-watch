@@ -236,14 +236,14 @@ function displayItem(itemId) {
         let prodCompany = document.createElement("P");
         prodCompany.setAttribute("class", "col-6 col-sm-6 col-md-6 col-lg-6 col-xl-5 col-3");
         prodCompany.setAttribute("id", "prod-company");
-        prodCompany.innerText = obj.production_companies[0].name;
+        prodCompany.innerText = "Prod. company: " + obj.production_companies[0].name;
         document.getElementById("prod-info-row").appendChild(prodCompany);
 
         // production country at item.html
         let prodCountry = document.createElement("P");
         prodCountry.setAttribute("class", "col-6 col-sm-6 col-md-4 col-lg-4 col-xl-3 col-3");
         prodCountry.setAttribute("id", "prod-country");
-        prodCountry.innerText = obj.production_countries[0].name;
+        prodCountry.innerText = "Prod. country: " + obj.production_countries[0].name;
         document.getElementById("prod-info-row").appendChild(prodCountry);
 
 
@@ -262,4 +262,32 @@ function displayItem(itemId) {
         document.getElementById("item-date-id-row").appendChild(itemId);
 
     })
+}
+
+
+function displaySimilarMovies(movieId) {
+
+    type = "movie/" + movieId + "/similar";
+
+    let url = apiUrl + type + apiKey;
+    console.log(url);
+    fetch(url).then(response => response.json()).then(function(obj) {
+        const NUMBER_OF_SIMILAR_MOVIES = 4;
+        for (let i = 0; i < NUMBER_OF_SIMILAR_MOVIES; i++) {
+            let img = imagePathPrefix + obj.results[i].poster_path;
+            let title = obj.results[i].title;
+            let genre = obj.results[i].genre_ids[0];
+            let year = obj.results[i].release_date.substring(0, 4);
+            let id = obj.results[i].id;
+            document.getElementById("similar-movies").innerHTML += "<div class=' card mx-auto my-4 text-center' style='max-width: 18rem;'>" +
+                "<img class='card-img-top mx-auto my-auto' style='max-width:16.5rem; max-height:300px;' src='" + img + "' alt='Card image cap'>" +
+                "  <div class='card-body'>" +
+                "<h5 class='card-title'>" + title + "</h5>" +
+                " <a href='#' class='card-link text-muted text-decoration-none'>" + genre + "</a>" +
+                " <a href='#' class='card-link text-muted text-decoration-none'>(" + year + ")</a>" +
+                "<a href='#' onclick='previewItem(" + id + ")' class='btn btn-primary btn-warning my-4 d-block'>Go somewhere</a>" +
+                "</div>  </div>"
+        }
+    })
+
 }
