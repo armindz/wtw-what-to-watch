@@ -171,7 +171,7 @@ function displayMovieByGenre(genreId) {
                     "<h5 class='card-title'>" + obj.title + "</h5>" +
                     " <a href='#' class='card-link text-muted text-decoration-none'>" + genre + "</a>" +
                     " <a href='#' class='card-link text-muted text-decoration-none'>(" + year + ")</a>" +
-                    "<a href='#' onclick='previewItem(" + obj.id + ")' class='btn btn-primary btn-warning my-4'>Go somewhere</a>" +
+                    "<a href='#' onclick='previewItem(" + obj.id + ")' class='btn btn-primary btn-warning my-4 d-block'>View details</a>" +
                     "</div>  </div>"
             }
 
@@ -285,9 +285,15 @@ function displaySimilarMovies(movieId) {
                 "<h5 class='card-title'>" + title + "</h5>" +
                 " <a href='#' class='card-link text-muted text-decoration-none'>" + genre + "</a>" +
                 " <a href='#' class='card-link text-muted text-decoration-none'>(" + year + ")</a>" +
-                "<a href='#' onclick='previewItem(" + id + ")' class='btn btn-primary btn-warning my-4 d-block'>Go somewhere</a>" +
+                "<a href='#' onclick='previewItem(" + id + ")' class='btn btn-primary btn-warning my-4 d-block ff-lato'>View details</a>" +
                 "</div>  </div>"
         }
     })
+
+}
+
+function displayPopularMovies() {
+
+
 
 }

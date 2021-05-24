@@ -10631,6 +10631,9 @@ fieldset:disabled .btn {
     }
 }
 
+
+/* ---------- Non-bootstrap properties -------------*/
+
 .logo {
     max-width: 200px;
     max-height: 100px;
@@ -10669,11 +10672,30 @@ fieldset:disabled .btn {
     position: relative;
     display: flex;
     max-width: 400px;
-    height: 500px;
+    max-height: 500px;
 }
 
 #item-image img {
     position: relative;
+    max-width: 400px;
+    min-width: 200px;
+    width: auto;
+}
+
+#item-details-row {
+    min-width: 200px;
+    max-width: 100%;
+    border: 2px red solid;
+}
+
+.ff-inter {
+    font-family: Inter;
+    font-weight: 600;
+}
+
+.ff-lato {
+    font-family: Lato;
+    font-weight: 600;
 }
 
 
