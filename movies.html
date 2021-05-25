@@ -22,7 +22,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 
-<body onload="listMovieGenres() ">
+<body onload="listMovieGenres(); listMovieYears(2000, 2021)">
 
 
     <!-- ---------------------- NORMAL HEADER ------------------- -->
@@ -81,7 +81,7 @@
 
         <!-- navbar brand -->
         <div class="col-11 d-block d-lg-none">
-            <a href="" class="navbar-brand"><img id="logoSmall" src="img/icon/wtwicon.png"></a>
+            <a href="index.html" class="navbar-brand"><img id="logoSmall" src="img/icon/wtwicon.png"></a>
 
             <!-- /navbar brand -->
 
@@ -119,18 +119,11 @@
     <div class="clearfix"></div>
 
 
-
-
-
-
-
-
-
     <!-- ------------------------MOVIES----------------------  -->
 
     <div class="container-fluid">
 
-        <h3 class="my-5 mx-auto ff-inter " style="text-align: center">Top 10 movies this month</h3>
+        <h3 class="my-5 mx-auto ff-inter " style="text-align: center">List of movies by genre & year</h3>
         <div class="row align-items-start text-center">
 
             <div class="row col-8 col-sm-8 col-md-9 col-lg-8 col-xl-9 " id="movie-container">
@@ -138,61 +131,34 @@
                 <!-- items injected by js html dom -->
             </div>
 
-            <div class="row col-5 col-sm-4 col-md-3 col-lg-4 col-xl-3 ">
-
+            <div class="row col-5 col-sm-4 col-md-3 col-lg-4 col-xl-3 sticky-top">
 
                 <div id="film">
-
-
+                    <!-- items injected by js html dom -->
                 </div>
-
 
                 <div class="just-padding">
 
                     <div class="list-group list-group-root well ff-lato">
 
-
+                        <!-- listing genres on right side -->
                         <a href="#listGenre" class="list-group-item bg-warning" data-toggle="collapse">
                             <i class="bi bi-chevron-right"></i>Genre
                         </a>
                         <div class="list-group collapse " id="listGenre">
-
+                            <!-- items injected by js html dom -->
                         </div>
 
-
-
-
-
-
+                        <!-- listing years on right side -->
                         <a href="#listYear" class="list-group-item bg-warning" data-toggle="collapse">
                             <i class="bi bi-chevron-right"></i>Year
                         </a>
                         <div class="list-group collapse" id="listYear">
-                            <a href="#" class="list-group-item">2021</a>
-                            <a href="#" class="list-group-item">2020</a>
-                            <a href="#" class="list-group-item">2019</a>
-                            <a href="#" class="list-group-item">2018</a>
-                            <a href="#" class="list-group-item">2017</a>
-                            <a href="#" class="list-group-item">2016</a>
-                            <a href="#" class="list-group-item">2015</a>
-                            <a href="#" class="list-group-item">2014</a>
-                            <a href="#" class="list-group-item">2013</a>
+                            <!-- items injected by js html dom -->
                         </div>
 
-
-
-
-
                     </div>
-
                 </div>
-
-
-
-
-
-
-
 
             </div>
         </div>

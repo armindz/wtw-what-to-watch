@@ -30,7 +30,7 @@ function getTop10Movies() {
                 document.getElementById("topEightFirstPage").innerHTML += "<div class=' card mx-1 my-4 ' style='max-width: 12rem; max-height:22rem;'>" +
                     "<img class='card-img-top mx-auto my-auto' style='max-width:10rem; max-height:12rem;' src='" + img + "' alt='Card image cap'>" +
                     "<div class='card-body'>" +
-                    " <a href='#' class='text-decoration-none text-dark'>" +
+                    " <a onclick='previewItem(" + obj.results[i].id + ")' href='#' class='text-decoration-none text-dark'>" +
                     "  <h5 class='card-title' id='title'>" + title + "</h5>" +
                     " </a>" +
                     "  <a href='#' id='genre' class='card-link text-muted text-decoration-none'>" + genre + "</a>" +
@@ -41,7 +41,7 @@ function getTop10Movies() {
                 document.getElementById("topEightSecondPage").innerHTML += "<div class=' card mx-1 my-4 ' style='max-width: 12rem; max-height:22rem;'>" +
                     "<img class='card-img-top mx-auto my-auto' style='max-width:10rem; max-height:12rem;' src='" + img + "' alt='Card image cap'>" +
                     "<div class='card-body'>" +
-                    " <a href='#' class='text-decoration-none text-dark'>" +
+                    " <a onclick='previewItem(" + obj.results[i].id + ")' href='#' class='text-decoration-none text-dark'>" +
                     "  <h5 class='card-title' id='title'>" + title + "</h5>" +
                     " </a>" +
                     "  <a href='#' id='genre' class='card-link text-muted text-decoration-none'>" + genre + "</a>" +
@@ -147,7 +147,7 @@ function displayMovieByGenre(genreId) {
     for (let i = 2; i < 1000; i++) {
 
         let url = apiUrl + type + i + apiKey;
-        console.log(url);
+
         fetch(url).then(response => {
 
 
@@ -160,7 +160,7 @@ function displayMovieByGenre(genreId) {
         }).then(function(obj) {
 
 
-            let title = obj.title;
+
             let genre = obj.genres[0].name;
             let img = imagePathPrefix + obj.poster_path;
             let year = obj.release_date.substring(0, 4);
@@ -279,21 +279,77 @@ function displaySimilarMovies(movieId) {
             let genre = obj.results[i].genre_ids[0];
             let year = obj.results[i].release_date.substring(0, 4);
             let id = obj.results[i].id;
-            document.getElementById("similar-movies").innerHTML += "<div class=' card mx-auto my-4 text-center' style='max-width: 18rem;'>" +
+            document.getElementById("similar-movies").innerHTML += "<div class=' card mx-auto my-4 text-center col-12 col-sm-12 col-md-5 col-lg-3 col-xl-3' style='max-width: 18rem;'>" +
                 "<img class='card-img-top mx-auto my-auto' style='max-width:16.5rem; max-height:300px;' src='" + img + "' alt='Card image cap'>" +
                 "  <div class='card-body'>" +
-                "<h5 class='card-title'>" + title + "</h5>" +
+                "<h5 maxlength = '30' class='card-title'>" + title + "</h5>" +
                 " <a href='#' class='card-link text-muted text-decoration-none'>" + genre + "</a>" +
                 " <a href='#' class='card-link text-muted text-decoration-none'>(" + year + ")</a>" +
-                "<a href='#' onclick='previewItem(" + id + ")' class='btn btn-primary btn-warning my-4 d-block ff-lato'>View details</a>" +
+                "<a href='#' onclick='previewItem(" + id + ")' class='btn btn-primary btn-warning my-4 d-block'>View details</a>" +
                 "</div>  </div>"
         }
     })
 
 }
+// display movies by year (triggered when year section is clicked)
+function displayMovieByYear(releaseYear) {
+    console.log(releaseYear);
+    // clear movie container
+    document.getElementById("movie-container").innerHTML = "";
+    type = "movie/";
+    const ITEMS_PER_PAGE = 20;
+    for (let i = 2; i < 1000; i++) {
 
-function displayPopularMovies() {
+        let url = apiUrl + type + i + apiKey;
+        console.log(url);
+        fetch(url).then(response => {
 
 
+            if (response.status == 200) {
+                console.log(response);
+                return response.json();
+            } else {
+                throw `error with status ${response.status}`;
+            }
+        }).then(function(obj) {
+
+
+
+            let genre = obj.genres[0].name;
+            let img = imagePathPrefix + obj.poster_path;
+            let year = obj.release_date.substring(0, 4);
+            console.log(year);
+            if (releaseYear == year) {
+                document.getElementById("movie-container").innerHTML += "<div class=' card mx-auto my-4 ' style='max-width: 18rem;'>" +
+                    "<img class='card-img-top mx-auto my-auto' style='max-width:16.5rem; max-height:300px;' src='" + img + "' alt='Card image cap'>" +
+                    "  <div class='card-body'>" +
+                    "<h5 class='card-title'>" + obj.title + "</h5>" +
+                    " <a href='#' class='card-link text-muted text-decoration-none'>" + genre + "</a>" +
+                    " <a href='#' class='card-link text-muted text-decoration-none'>(" + year + ")</a>" +
+                    "<a href='#' onclick='previewItem(" + obj.id + ")' class='btn btn-primary btn-warning my-4 d-block'>View details</a>" +
+                    "</div>  </div>"
+            }
+
+
+
+
+        }).catch(function(error) {
+            console.log("ERROR");
+            console.log(error);
+        })
+    }
+
+}
+
+
+function listMovieYears(startYear, endYear) {
+
+    for (let i = endYear; i >= startYear; i--) {
+        let year = document.createElement("A");
+        year.setAttribute("class", "list-group-item");
+        year.setAttribute("onclick", "displayMovieByYear(" + i + ")");
+        year.innerText = i;
+        document.getElementById("listYear").appendChild(year);
+    }
 
 }
