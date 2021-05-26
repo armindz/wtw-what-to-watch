@@ -341,7 +341,7 @@ function displayMovieByYear(releaseYear) {
 
 }
 
-
+// display list of years with forwarded year range on page load
 function listMovieYears(startYear, endYear) {
 
     for (let i = endYear; i >= startYear; i--) {
@@ -352,4 +352,58 @@ function listMovieYears(startYear, endYear) {
         document.getElementById("listYear").appendChild(year);
     }
 
+}
+
+
+// display popular movies at movies.html
+function displayPopularMovies() {
+
+    const NUMBER_OF_POPULAR_MOVIES = 20;
+    type = "movie/popular";
+
+
+    let url = apiUrl + type + apiKey;
+    console.log(url);
+    fetch(url).then(function(response) {
+        return response.json();
+    }).then(function(obj) {
+
+        for (let i = 0; i <= NUMBER_OF_POPULAR_MOVIES; i++) {
+            let title = obj.results[i].title;
+            let genre = obj.results[i].genre_ids[0];
+            let img = imagePathPrefix + obj.results[i].poster_path;
+            let year = obj.results[i].release_date.substring(0, 4);
+            let id = obj.results[i].id;
+            console.log(obj.results);
+
+
+            document.getElementById("movie-container").innerHTML += "<div class=' card mx-auto my-4 ' style='max-width: 18rem;'>" +
+                "<img class='card-img-top mx-auto my-auto' style='max-width:16.5rem; max-height:300px;' src='" + img + "' alt='Card image cap'>" +
+                "  <div class='card-body'>" +
+                "<h5 class='card-title'>" + title + "</h5>" +
+                " <a href='#' class='card-link text-muted text-decoration-none'>" + genre + "</a>" +
+                " <a href='#' class='card-link text-muted text-decoration-none'>(" + year + ")</a>" +
+                "<a href='#' onclick='previewItem(" + id + ")' class='btn btn-primary btn-warning my-4 d-block'>View details</a>" +
+                "</div>  </div>"
+        }
+
+
+    }).catch(function(error) {
+        console.error("Something went wrong");
+        console.error(error);
+    })
+
+}
+
+// everything necessary to be displayed when movies.html is loaded
+function setMoviesPage() {
+
+    // display movie genres list
+    listMovieGenres();
+
+    // display movie year list with forwarded range data
+    listMovieYears(2000, 2021)
+
+    // display popular movies at page startup
+    displayPopularMovies();
 }
