@@ -4,8 +4,21 @@ let apiUrl = "https://api.themoviedb.org/3/";
 let type;
 let apiKey = "?api_key=8c1a9592c5e5592b4ae3683c1656a158";
 let genreName = null;
+let language = "&language=en-US";
 let imagePathPrefix = "https://www.themoviedb.org/t/p/w500";
 
+
+function searchItem() {
+    window.location = 'movies.html';
+    type = "search/movie";
+    let page = "&page=1";
+    let queryData = document.getElementById("searchInput").value;
+    let queryUrl = "&query=" + queryData;
+    console.log(queryData);
+    url = apiUrl + apiKey + language + page + queryUrl;
+
+
+}
 // mechanism for getting most popular movies & display at index.html
 function getTop10Movies() {
     const NUMBER_OF_TOP_MOVIES = 7;
@@ -374,7 +387,7 @@ function displayPopularMovies() {
             let img = imagePathPrefix + obj.results[i].poster_path;
             let year = obj.results[i].release_date.substring(0, 4);
             let id = obj.results[i].id;
-            console.log(obj.results);
+            // console.log(obj.results);
 
 
             document.getElementById("movie-container").innerHTML += "<div class=' card mx-auto my-4 ' style='max-width: 18rem;'>" +
