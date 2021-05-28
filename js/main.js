@@ -9,14 +9,14 @@ let imagePathPrefix = "https://www.themoviedb.org/t/p/w500";
 
 
 function searchItem() {
-    window.location = 'movies.html';
+    //window.location = 'movies.html';
     type = "search/movie";
     let page = "&page=1";
     let queryData = document.getElementById("searchInput").value;
     let queryUrl = "&query=" + queryData;
-    console.log(queryData);
-    url = apiUrl + apiKey + language + page + queryUrl;
 
+    url = apiUrl + type + apiKey + language + page + queryUrl;
+    console.log(url);
 
 }
 // mechanism for getting most popular movies & display at index.html
