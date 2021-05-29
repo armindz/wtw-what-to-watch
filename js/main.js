@@ -9,14 +9,47 @@ let imagePathPrefix = "https://www.themoviedb.org/t/p/w500";
 
 
 function searchItem() {
-    //window.location = 'movies.html';
+
+
+    const parameters = (new URL(window.location)).searchParams;
+    const searchParam = parameters.get("search");
     type = "search/movie";
     let page = "&page=1";
-    let queryData = document.getElementById("searchInput").value;
-    let queryUrl = "&query=" + queryData;
+    let queryUrl = "&query=" + searchParam;
 
     url = apiUrl + type + apiKey + language + page + queryUrl;
     console.log(url);
+
+
+    fetch(url).then(function(response) {
+        return response.json();
+    }).then(function(obj) {
+
+        for (let i = 0; i <= obj.results.length; i++) {
+            let title = obj.results[i].title;
+            let genre = obj.results[i].genre_ids[0];
+            let img = imagePathPrefix + obj.results[i].poster_path;
+            let year = obj.results[i].release_date.substring(0, 4);
+            let id = obj.results[i].id;
+
+
+
+            document.getElementById("search-item").innerHTML += "<div class=' card mx-auto my-4 ' style='max-width: 18rem;'>" +
+                "<img class='card-img-top mx-auto my-auto' style='max-width:16.5rem; max-height:300px;' src='" + img + "' alt='Card image cap'>" +
+                "  <div class='card-body'>" +
+                "<h5 class='card-title'>" + title + "</h5>" +
+                " <a href='#' class='card-link text-muted text-decoration-none'>" + genre + "</a>" +
+                " <a href='#' class='card-link text-muted text-decoration-none'>(" + year + ")</a>" +
+                "<a href='#' onclick='previewItem(" + id + ")' class='btn btn-primary btn-warning my-4 d-block'>View details</a>" +
+                "</div>  </div>"
+        }
+
+
+    }).catch(function(error) {
+        console.error("Something went wrong");
+        console.error(error);
+    })
+
 
 }
 // mechanism for getting most popular movies & display at index.html

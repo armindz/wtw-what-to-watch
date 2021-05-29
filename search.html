@@ -20,7 +20,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body onload="searchItem()">
 
 
     <!-- ---------------------- NORMAL HEADER ------------------- -->
@@ -121,79 +121,18 @@
     <div class="clearfix"></div>
 
 
-    <!-- ------------------------- CONTACT FORM IMAGE ---------------------- -->
-
-    <img class="img-fluid" src="img/contactus.jpg">
-
-    <!-- ------------------------- /CONTACT FORM IMAGE ---------------------- -->
 
 
+    <!-- ---------------------------- SEARCH FORM ----------------------------- -->
 
-    <!-- ---------------------------- CONTACT FORM ----------------------------- -->
-
-    <div class="container col-10 col-sm-8 col-md-8 col-lg-8 col-xl-6 text-center mx-auto my-5 ff-inter ">
-
-        <h3 class="mx-auto my-5 ">Contact Us</h3>
-        <form action="mailto:armindzibric6@gmail.com">
-            <!-- text on top -->
-            <div id="emailHelp" class="form-text mx-auto my-3">We'll never share your personal informations with anyone else.</div>
-            <!-- /text on top -->
-
-
-            <!-- first name & last name row -->
-            <div class="row d-flex justify-content-center ">
-
-                <div class="col-5 col-sm-4 col-md-4 col-lg-4 col-xl-3 ">
-                    <div class=" form-group ">
-                        <input type="text " class="form-control " id="firstName " placeholder="First name ">
-                    </div>
-                </div>
-
-                <div class="col-5 col-sm-4 col-md-4 col-lg-4 col-xl-3 ">
-                    <div class=" form-group ">
-                        <input type="text " class="form-control " id="lastName " placeholder="Last name ">
-                    </div>
-                </div>
-
-            </div>
-            <!-- /first name & last name row -->
-
-
-            <!-- mail row -->
-            <div class="row d-flex justify-content-center">
-                <div class="col-10 col-sm-8 col-md-8 col-lg-8 col-xl-6">
-                    <div class="form-group">
-                        <input type="mail " class="form-control my-4 " id="firstName " placeholder="E-mail ">
-                    </div>
-                </div>
-            </div>
-            <!-- /mail row -->
-
-
-            <!-- text row -->
-            <div class="row d-flex justify-content-center">
-                <div class="col-10 col-sm-8 col-md-8 col-lg-8 col-xl-6">
-                    <div class="form-group">
-                        <textarea id="subject " class="form-control" name="subject " placeholder="Write something.. "></textarea>
-                    </div>
-                </div>
-            </div>
-            <!-- /text row -->
-
-            <!-- submit button -->
-            <a href="mailto:?subject=Feedback "><button type="submit " class="btn btn-primary bg-warning my-4 ">Submit</button></a>
-            <!-- /submit button -->
-        </form>
-
+    <div class="container">
+        <div class="row col-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 text-center " id="search-item">
+            <!-- data is being injected with JS-->
+        </div>
     </div>
 
-    <!-- ---------------------------- /CONTACT FORM ----------------------------- -->
 
-
-
-
-
-
+    <!-- ---------------------------- /SEARCH FORM ----------------------------- -->
 
 
     <!-- -----------------------   FOOTER ----------------------- -->

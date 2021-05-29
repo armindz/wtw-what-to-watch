@@ -10713,7 +10713,8 @@ fieldset:disabled .btn {
     border: 2px red solid;
 }
 
-#movie-container h5 {
+#movie-container h5,
+#search-item h5 {
     height: 45px;
     overflow: hidden;
 }
