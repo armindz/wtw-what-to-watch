@@ -8,17 +8,20 @@ let language = "&language=en-US";
 let imagePathPrefix = "https://www.themoviedb.org/t/p/w500";
 
 
+// search form is being ran when search.html is loaded. 
+//display results based on executed data from search form 
 function searchItem() {
 
-
+    // get url parameters
     const parameters = (new URL(window.location)).searchParams;
+    // assign search parameter to variable;
     const searchParam = parameters.get("search");
+
+    // api url info
     type = "search/movie";
     let page = "&page=1";
     let queryUrl = "&query=" + searchParam;
-
     url = apiUrl + type + apiKey + language + page + queryUrl;
-    console.log(url);
 
 
     fetch(url).then(function(response) {
@@ -28,11 +31,13 @@ function searchItem() {
         for (let i = 0; i <= obj.results.length; i++) {
             let title = obj.results[i].title;
             let genre = obj.results[i].genre_ids[0];
-            let img = imagePathPrefix + obj.results[i].poster_path;
+            let img = "img/icon/wtw-default-img.png";
+            if (obj.results[i].poster_path != null) {
+                img = imagePathPrefix + obj.results[i].poster_path;
+            }
+
             let year = obj.results[i].release_date.substring(0, 4);
             let id = obj.results[i].id;
-
-
 
             document.getElementById("search-item").innerHTML += "<div class=' card mx-auto my-4 ' style='max-width: 18rem;'>" +
                 "<img class='card-img-top mx-auto my-auto' style='max-width:16.5rem; max-height:300px;' src='" + img + "' alt='Card image cap'>" +
@@ -55,11 +60,10 @@ function searchItem() {
 // mechanism for getting most popular movies & display at index.html
 function getTop10Movies() {
     const NUMBER_OF_TOP_MOVIES = 7;
+    // api url info
     type = "movie/popular";
-    // let page = "&page_1";
-
     let url = apiUrl + type + apiKey;
-    console.log(url);
+
     fetch(url).then(function(response) {
         return response.json();
     }).then(function(obj) {
@@ -69,7 +73,7 @@ function getTop10Movies() {
             let genre = obj.results[i].genre_ids[0];
             let img = imagePathPrefix + obj.results[i].poster_path;
             let year = obj.results[i].release_date.substring(0, 4);
-            console.log(obj.results);
+
 
 
             if (i <= NUMBER_OF_TOP_MOVIES / 2) {
@@ -107,7 +111,7 @@ function getTop10Movies() {
 }
 // mechanism for listing movie genres in movie.html sidebar
 function listMovieGenres() {
-
+    // api url info
     type = "genre/movie/list";
     let url = apiUrl + type + apiKey;
 
@@ -134,7 +138,7 @@ function listMovieGenres() {
 
 // get list of genres & return as list
 function getListOfGenres() {
-
+    // api url info
     type = "genre/movie/list";
     let url = apiUrl + type + apiKey;
     let genres = [];
@@ -159,10 +163,9 @@ function getListOfGenres() {
 
 // getting name by forwarding genre id
 async function getNameFromGenreId(genreId) {
-
+    // api url info
     type = "genre/movie/list";
     let url = apiUrl + type + apiKey;
-
 
     fetch(url).then(response => response.json())
         .then(function(obj) {
@@ -187,7 +190,9 @@ async function getNameFromGenreId(genreId) {
 
 // display movies by genre (triggered when genre section is clicked)
 function displayMovieByGenre(genreId) {
+    // clear movie container for next loop
     document.getElementById("movie-container").innerHTML = "";
+    // api url info
     type = "movie/";
     const ITEMS_PER_PAGE = 20;
     for (let i = 2; i < 1000; i++) {
@@ -310,13 +315,13 @@ function displayItem(itemId) {
     })
 }
 
-
+// display similar movies ( currently only on movies.html). 
+// generated based on movie id provided
 function displaySimilarMovies(movieId) {
-
+    // api url info
     type = "movie/" + movieId + "/similar";
-
     let url = apiUrl + type + apiKey;
-    console.log(url);
+
     fetch(url).then(response => response.json()).then(function(obj) {
         const NUMBER_OF_SIMILAR_MOVIES = 4;
         for (let i = 0; i < NUMBER_OF_SIMILAR_MOVIES; i++) {
@@ -339,11 +344,13 @@ function displaySimilarMovies(movieId) {
 }
 // display movies by year (triggered when year section is clicked)
 function displayMovieByYear(releaseYear) {
-    console.log(releaseYear);
+
     // clear movie container
     document.getElementById("movie-container").innerHTML = "";
+    // api url info
     type = "movie/";
     const ITEMS_PER_PAGE = 20;
+
     for (let i = 2; i < 1000; i++) {
 
         let url = apiUrl + type + i + apiKey;
@@ -401,7 +408,7 @@ function listMovieYears(startYear, endYear) {
 }
 
 
-// display popular movies at movies.html
+// display popular movies at movies.html as default
 function displayPopularMovies() {
 
     const NUMBER_OF_POPULAR_MOVIES = 20;
